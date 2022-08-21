@@ -1,8 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import createMultiTabState from 'vuex-multi-tab-state';
+import VuexPersistence from "vuex-persist";
 // work with reloading
-// sync tabs
+// not sync tabs
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+});
 
 Vue.use(Vuex);
 
@@ -52,5 +56,5 @@ export default new Vuex.Store({
       commit("removeTodo", id);
     }
   },
-  plugins: [   createMultiTabState()]
+  plugins: [vuexLocal.plugin]
 });
