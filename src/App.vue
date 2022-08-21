@@ -42,7 +42,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("initTodos");
+    // this.$store.dispatch("initTodos");
   }
 };
 </script>

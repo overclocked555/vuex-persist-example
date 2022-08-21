@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import todos from "../data/todos";
 import VuexPersistence from "vuex-persist";
+// work with reloading
+// not sync tabs
 
 const vuexLocal = new VuexPersistence({
   storage: window.localStorage
@@ -11,7 +12,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    todos: null
+    todos: [  { text: "learn javascript", done: true, id: Date.now() },
+    { text: "learn vue", done: false, id: Date.now() + 1 },
+    { text: "learn vuex", done: false, id: Date.now() + 2 }
+  ]
   },
   getters: {
     todos: state => {
@@ -19,9 +23,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    setTodos(state, todos) {
-      state.todos = todos;
-    },
+    // setTodos(state, todos) {
+    //   state.todos = todos;
+    // },
     addTodo: (state, todo) => {
       state.todos.push(todo);
     },
@@ -39,9 +43,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    initTodos: ({ commit }) => {
-      commit("setTodos", todos);
-    },
+    // initTodos: ({ commit }) => {
+    //   commit("setTodos", todos);
+    // },
     addTodo: ({ commit }, todo) => {
       commit("addTodo", todo);
     },
