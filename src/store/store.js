@@ -1,11 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import todos from "../data/todos";
-import VuexPersistence from "vuex-persist";
-
-const vuexLocal = new VuexPersistence({
-  storage: window.localStorage
-});
+import createPersistedState from "vuex-persistedstate";
+// work with reloading
+// not sync tabs
 
 Vue.use(Vuex);
 
@@ -52,5 +49,5 @@ export default new Vuex.Store({
       commit("removeTodo", id);
     }
   },
-  plugins: [vuexLocal.plugin]
+  plugins: [createPersistedState()],
 });
